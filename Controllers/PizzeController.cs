@@ -13,5 +13,24 @@ namespace la_mia_pizzeria_static.Controllers
                 return View(pizzaList);
             }
         }
+
+        public IActionResult Details(int id)
+        {
+            using (PizzeriaContext db = new PizzeriaContext())
+            {
+                Pizza current = db.Pizzas.Find(id);
+
+                if (current == null)
+                {
+                    return NotFound($"La pizza con id {id} non è stato trovato");
+                }
+                else
+                {
+                    return View(current);
+                }
+            }
+
+        }
     }
 }
+

@@ -1,5 +1,5 @@
 ﻿@{
-	ViewData["Title"] = "Pizze";
+	ViewData["Title"] = "Menu";
 }
 
 @model List<Pizza>
@@ -9,41 +9,26 @@
 	<div class="container">
 		@if (Model.Count() == 0)
 		{
-			<div class="row text-center w-100">Non ci sono pizze nella lista</div>
+			<div class="w-100">Non ci sono pizze nella lista</div>
 		}
 		else
 		{
 			<div class="row row-cols-3 gy-3">
-				<div class="col">
-					<div class="card">
-						<div class="card-body">
-							<h5 class="card-title">Buster</h5>
-							<p class="card-text">Increases fat by 1%</p>
+				@foreach (Pizza pizza in Model)
+				{
+					<div class="col">
+						<div class="card">
+							<div class="card-body">
+								<a href="#">
+									<h5 class="card-title">@pizza.Name</h5>
+								</a>
+								<p class="card-text">@pizza.Description</p>
+							</div>
+							<img src="@pizza.ImgPath" class="card-img-top" alt="pizza">
+							<div class="card-text">@pizza.Price</div>
 						</div>
-						<img src="~/img/buster.jfif" class="card-img-top" alt="pizza">
-						<div class="card-text">$2</div>
 					</div>
-				</div>
-				<div class="col">
-					<div class="card">
-						<div class="card-body">
-							<h5 class="card-title">Double D-Luxe</h5>
-							<p class="card-text">Increases fat by 2%</p>
-						</div>
-						<img src="~/img/double.jfif" class="card-img-top" alt="pizza">
-						<div class="card-text">$5/$6</div>
-					</div>
-				</div>
-				<div class="col">
-					<div class="card">
-						<div class="card-body">
-							<h5 class="card-title">Full Rack</h5>
-							<p class="card-text">Increases fat by 3%</p>
-						</div>
-						<img src="~/img/full.jfif" class="card-img-top" alt="pizza">
-						<div class="card-text">$10/$12</div>
-					</div>
-				</div>
+				}
 			</div>
 		}
 	</div>

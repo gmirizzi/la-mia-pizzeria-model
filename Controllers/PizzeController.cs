@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using la_mia_pizzeria_static.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace la_mia_pizzeria_static.Controllers
 {
@@ -6,7 +7,11 @@ namespace la_mia_pizzeria_static.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            using (PizzeriaContext db = new PizzeriaContext())
+            {
+                List<Pizza> pizzaList = db.Pizzas.ToList<Pizza>();
+                return View(pizzaList);
+            }
         }
     }
 }

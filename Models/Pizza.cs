@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace la_mia_pizzeria_static.Models
 {
-    [Table("Pizza")]
+    [Table("pizzas")]
     public class Pizza
     {
         [Key]
@@ -13,5 +13,7 @@ namespace la_mia_pizzeria_static.Models
         [Column(TypeName = "text")]
         public string Description { get; set; }
         public string ImgPath { get; set; }
+        [Required]
+        public string Price { get; set; }
     }
 }

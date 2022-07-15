@@ -1,1 +1,12 @@
-﻿
+﻿@model Pizza
+
+@{
+	ViewData["Title"] = @Model.Name;
+}
+
+<div class="container">
+	<h2>@Model.Name</h2>
+	<img src="@Model.ImgPath"/>
+	<div>@Model.Price</div>
+	<p>@Model.Description</p>
+</div>
